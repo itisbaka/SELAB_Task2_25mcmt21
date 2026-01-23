@@ -5,7 +5,7 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-
+using namespace std;
 // Constructor
 Student::Student() : totalMarks(0), percentage(0.0), grade(""), cgpa(0.0), passed(false) {
     for (int i = 0; i < SUBJECTS; i++) {
@@ -14,7 +14,7 @@ Student::Student() : totalMarks(0), percentage(0.0), grade(""), cgpa(0.0), passe
 }
 
 // Parameterized constructor
-Student::Student(const std::string& id, const std::string& name, const int marksArray[SUBJECTS]) 
+Student::Student(const string& id, const string& name, const int marksArray[SUBJECTS]) 
     : studentID(id), studentName(name), totalMarks(0), percentage(0.0), grade(""), cgpa(0.0), passed(false) {
     for (int i = 0; i < SUBJECTS; i++) {
         marks[i] = marksArray[i];
@@ -22,11 +22,11 @@ Student::Student(const std::string& id, const std::string& name, const int marks
 }
 
 // Getters
-std::string Student::getStudentID() const {
+string Student::getStudentID() const {
     return studentID;
 }
 
-std::string Student::getName() const {
+string Student::getName() const {
     return studentName;
 }
 
@@ -45,7 +45,7 @@ double Student::getPercentage() const {
     return percentage;
 }
 
-std::string Student::getGrade() const {
+string Student::getGrade() const {
     return grade;
 }
 
@@ -58,11 +58,11 @@ bool Student::isPassed() const {
 }
 
 // Setters
-void Student::setStudentID(const std::string& id) {
+void Student::setStudentID(const string& id) {
     studentID = id;
 }
 
-void Student::setName(const std::string& name) {
+void Student::setName(const string& name) {
     studentName = name;
 }
 
@@ -98,29 +98,29 @@ void Student::calculateResults() {
 
 // Display student information to console
 void Student::display() const {
-    std::cout << std::left << std::setw(15) << studentID 
-              << std::setw(25) << studentName;
+    cout << left << setw(15) << studentID 
+              << setw(25) << studentName;
     for (int i = 0; i < SUBJECTS; i++) {
-        std::cout << std::setw(8) << marks[i];
+        cout << setw(8) << marks[i];
     }
-    std::cout << std::setw(10) << totalMarks 
-              << std::setw(12) << std::fixed << std::setprecision(2) << percentage 
-              << std::setw(8) << grade 
-              << std::setw(8) << std::fixed << std::setprecision(2) << cgpa 
-              << std::endl;
+    cout << setw(10) << totalMarks 
+              << setw(12) << fixed << setprecision(2) << percentage 
+              << setw(8) << grade 
+              << setw(8) << fixed << setprecision(2) << cgpa 
+              << endl;
 }
 
 // Display student information to file
-void Student::displayToFile(std::ofstream& file) const {
-    file << std::left << std::setw(15) << studentID 
-         << std::setw(25) << studentName;
+void Student::displayToFile(ofstream& file) const {
+    file << left << setw(15) << studentID 
+         << setw(25) << studentName;
     for (int i = 0; i < SUBJECTS; i++) {
-        file << std::setw(8) << marks[i];
+        file << setw(8) << marks[i];
     }
-    file << std::setw(10) << totalMarks 
-         << std::setw(12) << std::fixed << std::setprecision(2) << percentage 
-         << std::setw(8) << grade 
-         << std::setw(8) << std::fixed << std::setprecision(2) << cgpa 
-         << std::endl;
+    file << setw(10) << totalMarks 
+         << setw(12) << fixed << setprecision(2) << percentage 
+         << setw(8) << grade 
+         << setw(8) << fixed << setprecision(2) << cgpa 
+         << endl;
 }
 

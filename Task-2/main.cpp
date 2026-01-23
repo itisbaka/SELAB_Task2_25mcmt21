@@ -1,42 +1,34 @@
 #include "student_result_system.h"
 #include <iostream>
 #include <string>
+using namespace std;
 
-/**
- * @brief Main entry point for Student Result Processing System
- * 
- * This program demonstrates:
- * - Usability: User-friendly interface with clear prompts
- * - Efficiency: Optimized memory usage and processing
- * - Reusability: Modular design allows reuse of components
- * - Interoperability: Can export to CSV for use with other platforms
- */
 int main() {
-    std::string inputFilename = "student_data.txt";
-    std::string outputFilename = "student_results.txt";
-    std::string csvFilename = "student_results.csv";
+    string inputFilename = "student_data.txt";
+    string outputFilename = "student_results.txt";
+    string csvFilename = "student_results.csv";
 
-    std::cout << "==========================================" << std::endl;
-    std::cout << "  Student Result Processing System v2.0" << std::endl;
-    std::cout << "==========================================" << std::endl;
-    std::cout << "\nReading student data from: " << inputFilename << std::endl;
+  
+    cout << "  Student Result Processing System v2.0" << endl;
+   
+    cout << "\nReading student data from: " << inputFilename << endl;
 
     // Create system instance
     StudentResultSystem system;
 
     // Load data from file
     if (!system.loadFromFile(inputFilename)) {
-        std::cerr << "\nError: No valid student data found in file!" << std::endl;
-        std::cerr << "Please ensure the file exists and contains valid data." << std::endl;
+        cerr << "\nError: No valid student data found in file!" << endl;
+        cerr << "Please ensure the file exists and contains valid data." << endl;
         return 1;
     }
 
-    std::cout << "Successfully loaded " << system.getStudentCount() << " student record(s)." << std::endl;
+    cout << "Successfully loaded " << system.getStudentCount() << " student record(s)." << endl;
 
     // Process all students
-    std::cout << "\nProcessing student results..." << std::endl;
+    cout << "\nProcessing student results..." << endl;
     system.processAllStudents();
-    std::cout << "Processing complete!" << std::endl;
+    cout << "Processing complete!" << endl;
 
     // Display results
     system.displayResults();
@@ -45,24 +37,24 @@ int main() {
     system.displayStatistics();
 
     // Save results to text file
-    std::cout << "\nSaving results to: " << outputFilename << std::endl;
+    cout << "\nSaving results to: " << outputFilename << endl;
     if (system.saveToFile(outputFilename)) {
-        std::cout << "Results saved successfully!" << std::endl;
+        cout << "Results saved successfully!" << endl;
     } else {
-        std::cerr << "Error: Failed to save results to file." << std::endl;
+        cerr << "Error: Failed to save results to file." << endl;
     }
 
     // Export to CSV for interoperability
-    std::cout << "\nExporting to CSV format: " << csvFilename << std::endl;
+    cout << "\nExporting to CSV format: " << csvFilename << endl;
     if (system.exportToCSV(csvFilename)) {
-        std::cout << "CSV export successful! File can be opened in Excel, Google Sheets, etc." << std::endl;
+        cout << "CSV export successful! File can be opened in Excel, Google Sheets, etc." << endl;
     } else {
-        std::cerr << "Error: Failed to export to CSV." << std::endl;
+        cerr << "Error: Failed to export to CSV." << endl;
     }
 
-    std::cout << "\n==========================================" << std::endl;
-    std::cout << "  Processing Complete!" << std::endl;
-    std::cout << "==========================================" << std::endl;
+
+    cout << "  Processing Complete!" << endl;
+  
 
     return 0;
 }

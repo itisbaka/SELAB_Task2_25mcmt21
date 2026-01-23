@@ -2,9 +2,10 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+using namespace std;
 
 namespace Statistics {
-    ClassStatistics calculateStatistics(const std::vector<Student>& students) {
+    ClassStatistics calculateStatistics(const vector<Student>& students) {
         ClassStatistics stats = {0};
         
         if (students.empty()) {
@@ -27,7 +28,7 @@ namespace Statistics {
                 stats.lowestPercentage = percentage;
             }
 
-            std::string grade = student.getGrade();
+            string grade = student.getGrade();
             if (grade == "O") stats.gradeCountO++;
             else if (grade == "A+") stats.gradeCountAPlus++;
             else if (grade == "A") stats.gradeCountA++;
@@ -49,54 +50,54 @@ namespace Statistics {
     }
 
     void displayStatistics(const ClassStatistics& stats) {
-        std::cout << "\nSTATISTICS" << std::endl;
-        std::cout << std::string(150, '*') << std::endl;
-        std::cout << "Total Students: " << stats.totalStudents << std::endl;
-        std::cout << "Class Average Percentage: " << std::fixed << std::setprecision(2) 
-                  << stats.averagePercentage << "%" << std::endl;
-        std::cout << "Highest Percentage: " << std::fixed << std::setprecision(2) 
-                  << stats.highestPercentage << "%" << std::endl;
-        std::cout << "Lowest Percentage: " << std::fixed << std::setprecision(2) 
-                  << stats.lowestPercentage << "%" << std::endl;
-        std::cout << "\nGrade Distribution:" << std::endl;
-        std::cout << "  Grade O:  " << stats.gradeCountO << " student(s)" << std::endl;
-        std::cout << "  Grade A+: " << stats.gradeCountAPlus << " student(s)" << std::endl;
-        std::cout << "  Grade A:  " << stats.gradeCountA << " student(s)" << std::endl;
-        std::cout << "  Grade B+: " << stats.gradeCountBPlus << " student(s)" << std::endl;
-        std::cout << "  Grade B:  " << stats.gradeCountB << " student(s)" << std::endl;
-        std::cout << "  Grade C:  " << stats.gradeCountC << " student(s)" << std::endl;
-        std::cout << "  Grade D:  " << stats.gradeCountD << " student(s)" << std::endl;
-        std::cout << "  Grade F:  " << stats.gradeCountF << " student(s)" << std::endl;
-        std::cout << "\nPass/Fail Statistics:" << std::endl;
-        std::cout << "  Passed: " << stats.passedStudents << " student(s)" << std::endl;
-        std::cout << "  Failed: " << stats.failedStudents << " student(s)" << std::endl;
-        std::cout << std::string(150, '*') << std::endl;
+        cout << "\nSTATISTICS" << endl;
+        cout << string(150, '*') << endl;
+        cout << "Total Students: " << stats.totalStudents << endl;
+        cout << "Class Average Percentage: " << fixed << setprecision(2) 
+                  << stats.averagePercentage << "%" << endl;
+        cout << "Highest Percentage: " << fixed << setprecision(2) 
+                  << stats.highestPercentage << "%" << endl;
+        cout << "Lowest Percentage: " << fixed << setprecision(2) 
+                  << stats.lowestPercentage << "%" << endl;
+        cout << "\nGrade Distribution:" << endl;
+        cout << "  Grade O:  " << stats.gradeCountO << " student(s)" << endl;
+        cout << "  Grade A+: " << stats.gradeCountAPlus << " student(s)" << endl;
+        cout << "  Grade A:  " << stats.gradeCountA << " student(s)" << endl;
+        cout << "  Grade B+: " << stats.gradeCountBPlus << " student(s)" << endl;
+        cout << "  Grade B:  " << stats.gradeCountB << " student(s)" << endl;
+        cout << "  Grade C:  " << stats.gradeCountC << " student(s)" << endl;
+        cout << "  Grade D:  " << stats.gradeCountD << " student(s)" << endl;
+        cout << "  Grade F:  " << stats.gradeCountF << " student(s)" << endl;
+        cout << "\nPass/Fail Statistics:" << endl;
+        cout << "  Passed: " << stats.passedStudents << " student(s)" << endl;
+        cout << "  Failed: " << stats.failedStudents << " student(s)" << endl;
+        cout << string(150, '*') << endl;
     }
 
-    void writeStatisticsToFile(std::ofstream& file, const ClassStatistics& stats) {
-        file << "\n" << std::string(150, '*') << std::endl;
-        file << "STATISTICS" << std::endl;
-        file << std::string(150, '*') << std::endl;
-        file << "Total Students: " << stats.totalStudents << std::endl;
-        file << "Class Average Percentage: " << std::fixed << std::setprecision(2) 
-             << stats.averagePercentage << "%" << std::endl;
-        file << "Highest Percentage: " << std::fixed << std::setprecision(2) 
-             << stats.highestPercentage << "%" << std::endl;
-        file << "Lowest Percentage: " << std::fixed << std::setprecision(2) 
-             << stats.lowestPercentage << "%" << std::endl;
-        file << "\nGrade Distribution:" << std::endl;
-        file << "  Grade O:  " << stats.gradeCountO << " student(s)" << std::endl;
-        file << "  Grade A+: " << stats.gradeCountAPlus << " student(s)" << std::endl;
-        file << "  Grade A:  " << stats.gradeCountA << " student(s)" << std::endl;
-        file << "  Grade B+: " << stats.gradeCountBPlus << " student(s)" << std::endl;
-        file << "  Grade B:  " << stats.gradeCountB << " student(s)" << std::endl;
-        file << "  Grade C:  " << stats.gradeCountC << " student(s)" << std::endl;
-        file << "  Grade D:  " << stats.gradeCountD << " student(s)" << std::endl;
-        file << "  Grade F:  " << stats.gradeCountF << " student(s)" << std::endl;
-        file << "\nPass/Fail Statistics:" << std::endl;
-        file << "  Passed: " << stats.passedStudents << " student(s)" << std::endl;
-        file << "  Failed: " << stats.failedStudents << " student(s)" << std::endl;
-        file << std::string(150, '*') << std::endl;
+    void writeStatisticsToFile(ofstream& file, const ClassStatistics& stats) {
+        file << "\n" << string(150, '*') << endl;
+        file << "STATISTICS" << endl;
+        file << string(150, '*') << endl;
+        file << "Total Students: " << stats.totalStudents << endl;
+        file << "Class Average Percentage: " << fixed << setprecision(2) 
+             << stats.averagePercentage << "%" << endl;
+        file << "Highest Percentage: " << fixed << setprecision(2) 
+             << stats.highestPercentage << "%" << endl;
+        file << "Lowest Percentage: " << fixed << setprecision(2) 
+             << stats.lowestPercentage << "%" << endl;
+        file << "\nGrade Distribution:" << endl;
+        file << "  Grade O:  " << stats.gradeCountO << " student(s)" << endl;
+        file << "  Grade A+: " << stats.gradeCountAPlus << " student(s)" << endl;
+        file << "  Grade A:  " << stats.gradeCountA << " student(s)" << endl;
+        file << "  Grade B+: " << stats.gradeCountBPlus << " student(s)" << endl;
+        file << "  Grade B:  " << stats.gradeCountB << " student(s)" << endl;
+        file << "  Grade C:  " << stats.gradeCountC << " student(s)" << endl;
+        file << "  Grade D:  " << stats.gradeCountD << " student(s)" << endl;
+        file << "  Grade F:  " << stats.gradeCountF << " student(s)" << endl;
+        file << "\nPass/Fail Statistics:" << endl;
+        file << "  Passed: " << stats.passedStudents << " student(s)" << endl;
+        file << "  Failed: " << stats.failedStudents << " student(s)" << endl;
+        file << string(150, '*') << endl;
     }
 }
 

@@ -5,35 +5,24 @@
 #include <string>
 #include "student.h"
 #include "statistics.h"
+using namespace std;
 
-/**
- * @class StudentResultSystem
- * @brief Main system class for managing student results
- * 
- * This class orchestrates all operations including reading data, processing,
- * displaying results, and generating statistics.
- * 
- * Module Characteristics:
- * - Name: Student Result System Module
- * - Cohesion: High (all methods manage student result operations)
- * - Coupling: Low (uses other modules through well-defined interfaces)
- */
 class StudentResultSystem {
 private:
-    std::vector<Student> students;
-    std::vector<std::string> studentIDs;
+    vector<Student> students;
+    vector<string> studentIDs;
 
-    bool isDuplicateID(const std::string& id) const;
-    void parseStudentFromLine(const std::string& line, int lineNumber);
+    bool isDuplicateID(const string& id) const;
+    void parseStudentFromLine(const string& line, int lineNumber);
 
 public:
     // Constructor
     StudentResultSystem();
 
     // File operations
-    bool loadFromFile(const std::string& filename);
-    bool saveToFile(const std::string& filename) const;
-    bool exportToCSV(const std::string& filename) const;
+    bool loadFromFile(const string& filename);
+    bool saveToFile(const string& filename) const;
+    bool exportToCSV(const string& filename) const;
 
     // Operations
     void processAllStudents();
@@ -43,7 +32,7 @@ public:
     // Getters
     int getStudentCount() const;
     bool isEmpty() const;
-    const std::vector<Student>& getStudents() const;
+    const vector<Student>& getStudents() const;
     ClassStatistics getStatistics() const;
 
     // Utility
@@ -51,5 +40,5 @@ public:
     bool addStudent(const Student& student);
 };
 
-#endif // STUDENT_RESULT_SYSTEM_H
+#endif 
 

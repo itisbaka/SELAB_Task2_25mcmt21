@@ -1,8 +1,8 @@
 #include "grade_calculator.h"
 #include "constants.h"
-
+using namespace std;
 namespace GradeCalculator {
-    std::string assignGrade(double percentage) {
+    string assignGrade(double percentage) {
         if (percentage >= 90) return "O";
         else if (percentage >= 85) return "A+";
         else if (percentage >= 75) return "A";
@@ -13,7 +13,7 @@ namespace GradeCalculator {
         else return "F";
     }
 
-    double calculateCGPA(const std::string& grade) {
+    double calculateCGPA(const string& grade) {
         if (grade == "O") return 10.0;
         else if (grade == "A+") return 9.0;
         else if (grade == "A") return 8.0;

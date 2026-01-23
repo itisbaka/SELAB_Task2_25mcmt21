@@ -1,21 +1,21 @@
 #include "validation.h"
 #include <cctype>
-
+using namespace std;
 namespace Validation {
-    bool isValidID(const std::string& id) {
+    bool isValidID(const string& id) {
         if (id.empty()) return false;
         for (char c : id) {
-            if (!std::isalnum(c)) {
+            if (!isalnum(c)) {
                 return false;
             }
         }
         return true;
     }
 
-    bool isValidName(const std::string& name) {
+    bool isValidName(const string& name) {
         if (name.empty()) return false;
         for (char c : name) {
-            if (!std::isalpha(c) && c != ' ') {
+            if (!isalpha(c) && c != ' ') {
                 return false;
             }
         }

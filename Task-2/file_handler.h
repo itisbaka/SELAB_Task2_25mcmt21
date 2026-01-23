@@ -4,28 +4,13 @@
 #include <string>
 #include <vector>
 #include "student.h"
+using namespace std;
 
-/**
- * @namespace FileHandler
- * @brief Provides file I/O operations for student data
- * 
- * Module Characteristics:
- * - Name: File Handler Module
- * - Cohesion: High (all functions handle file operations)
- * - Coupling: Low (depends only on Student class)
- * - Interoperability: Can read/write data in standard formats
- */
 namespace FileHandler {
-    /**
-     * @brief Reads student data from a file
-     * @param filename Input file path
-     * @param students Vector to store parsed students
-     * @param studentIDs Vector to track student IDs (for duplicate checking)
-     * @return Number of successfully parsed students
-     */
-    int readStudentDataFromFile(const std::string& filename, 
-                                std::vector<Student>& students,
-                                std::vector<std::string>& studentIDs);
+    
+    int readStudentDataFromFile(const string& filename, 
+                                vector<Student>& students,
+                                vector<string>& studentIDs);
 
     /**
      * @brief Writes student results to a file
@@ -33,8 +18,8 @@ namespace FileHandler {
      * @param students Vector of students to write
      * @return true if successful, false otherwise
      */
-    bool writeResultsToFile(const std::string& filename, 
-                           const std::vector<Student>& students);
+    bool writeResultsToFile(const string& filename, 
+                           const vector<Student>& students);
 
     /**
      * @brief Exports student data to CSV format
@@ -42,9 +27,9 @@ namespace FileHandler {
      * @param students Vector of students to export
      * @return true if successful, false otherwise
      */
-    bool exportToCSV(const std::string& filename, 
-                    const std::vector<Student>& students);
+    bool exportToCSV(const string& filename, 
+                    const vector<Student>& students);
 }
 
-#endif // FILE_HANDLER_H
+#endif 
 

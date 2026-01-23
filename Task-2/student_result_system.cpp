@@ -6,24 +6,24 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-
+using namespace std;
 StudentResultSystem::StudentResultSystem() {
 }
 
-bool StudentResultSystem::loadFromFile(const std::string& filename) {
+bool StudentResultSystem::loadFromFile(const string& filename) {
     students.clear();
     studentIDs.clear();
     int count = FileHandler::readStudentDataFromFile(filename, students, studentIDs);
     return count > 0;
 }
 
-bool StudentResultSystem::saveToFile(const std::string& filename) const {
+bool StudentResultSystem::saveToFile(const string& filename) const {
     if (!FileHandler::writeResultsToFile(filename, students)) {
         return false;
     }
 
     // Append statistics to file
-    std::ofstream file(filename, std::ios::app);
+    ofstream file(filename, ios::app);
     if (!file.is_open()) {
         return false;
     }
@@ -34,7 +34,7 @@ bool StudentResultSystem::saveToFile(const std::string& filename) const {
     return true;
 }
 
-bool StudentResultSystem::exportToCSV(const std::string& filename) const {
+bool StudentResultSystem::exportToCSV(const string& filename) const {
     return FileHandler::exportToCSV(filename, students);
 }
 
@@ -45,32 +45,32 @@ void StudentResultSystem::processAllStudents() {
 }
 
 void StudentResultSystem::displayResults() const {
-    std::cout << "\nSTUDENT RESULTS REPORT" << std::endl;
-    std::cout << std::string(150, '*') << std::endl;
-    std::cout << std::left << std::setw(15) << "Student ID" 
-              << std::setw(25) << "Name" 
-              << std::setw(8) << "Sub1" 
-              << std::setw(8) << "Sub2" 
-              << std::setw(8) << "Sub3" 
-              << std::setw(8) << "Sub4" 
-              << std::setw(8) << "Sub5" 
-              << std::setw(10) << "Total" 
-              << std::setw(12) << "Percentage" 
-              << std::setw(8) << "Grade" 
-              << std::setw(8) << "CGPA" 
-              << std::endl;
-    std::cout << std::string(150, '*') << std::endl;
+    cout << "\nSTUDENT RESULTS REPORT" << endl;
+    cout << string(150, '*') << endl;
+    cout << left << setw(15) << "Student ID" 
+              << setw(25) << "Name" 
+              << setw(8) << "Sub1" 
+              << setw(8) << "Sub2" 
+              << setw(8) << "Sub3" 
+              << setw(8) << "Sub4" 
+              << setw(8) << "Sub5" 
+              << setw(10) << "Total" 
+              << setw(12) << "Percentage" 
+              << setw(8) << "Grade" 
+              << setw(8) << "CGPA" 
+              << endl;
+    cout << string(150, '*') << endl;
 
     for (const Student& student : students) {
         student.display();
     }
 
-    std::cout << std::string(150, '*') << std::endl;
+    cout << string(150, '*') << endl;
 }
 
 void StudentResultSystem::displayStatistics() const {
     if (students.empty()) {
-        std::cout << "No students to display statistics." << std::endl;
+        cout << "No students to display statistics." << endl;
         return;
     }
     ClassStatistics stats = Statistics::calculateStatistics(students);
@@ -85,7 +85,7 @@ bool StudentResultSystem::isEmpty() const {
     return students.empty();
 }
 
-const std::vector<Student>& StudentResultSystem::getStudents() const {
+const vector<Student>& StudentResultSystem::getStudents() const {
     return students;
 }
 
@@ -108,8 +108,8 @@ bool StudentResultSystem::addStudent(const Student& student) {
     return true;
 }
 
-bool StudentResultSystem::isDuplicateID(const std::string& id) const {
-    for (const std::string& existingID : studentIDs) {
+bool StudentResultSystem::isDuplicateID(const string& id) const {
+    for (const string& existingID : studentIDs) {
         if (existingID == id) {
             return true;
         }
@@ -117,7 +117,7 @@ bool StudentResultSystem::isDuplicateID(const std::string& id) const {
     return false;
 }
 
-void StudentResultSystem::parseStudentFromLine(const std::string& line, int lineNumber) {
+void StudentResultSystem::parseStudentFromLine(const string& line, int lineNumber) {
     // This method is kept for backward compatibility but not used
     // File parsing is now handled by FileHandler module
 }
